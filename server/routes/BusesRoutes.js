@@ -28,21 +28,42 @@ router.post("/add-bus", auth, async (req, res, next) => {
 
 // get-all-buses
 
-router.post("/get-all-buses", auth, async (req, res, next) => {
+router.post("/get-all-buses", auth, async (req, res) => {
   try {
-    const buses = await BusSchema.find();
+    // Filters from the request body
+    const filters = req.body;
+
+    // Build query object dynamically
+    const query = {};
+    if (filters.from) query.from = { $regex: new RegExp(filters.from, "i") }; // Case-insensitive match
+    if (filters.to) query.to = { $regex: new RegExp(filters.to, "i") }; // Case-insensitive match
+    if (filters.journeyDate) query.journeyDate = new Date(filters.journeyDate); // Exact date match
+
+    console.log("Filters:", filters); // Debugging
+    console.log("Query:", query); // Debugging
+
+    // Fetch buses based on the query
+    const buses =
+      Object.keys(filters).length > 0
+        ? await BusSchema.find(query) // Apply filters
+        : await BusSchema.find(); // Fetch all buses if no filters
+
+    // Send response
     res.status(200).send({
       message: "Bus fetched successfully",
       success: true,
       data: buses,
     });
   } catch (error) {
+    console.error("Error fetching buses:", error.message);
     res.status(500).send({
       message: error.message,
       success: false,
     });
   }
 });
+
+//
 
 //update bus
 router.post("/update-bus", auth, async (req, res, next) => {

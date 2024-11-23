@@ -99,4 +99,43 @@ router.post("/get-user-by-id", auth, async (req, res, next) => {
   }
 });
 
+//get-all-users
+
+router.post("/get-all-users", auth, async (req, res) => {
+  try {
+    const users = await UserModels.find({});
+    res.send({
+      message: "Users fetched successfully",
+      success: true,
+      data: users,
+    });
+  } catch (error) {
+    res.send({
+      message: error.message,
+      success: false,
+      data: null,
+    });
+  }
+});
+
+// update-user-permissions
+
+router.post("/update-user-permissions", auth, async (req, res) => {
+  try {
+    await UserModels.findByIdAndUpdate(req.body._id, req.body);
+    res.send({
+      message: "User permissions updated successfully",
+      success: true,
+      data: null,
+    });
+  } catch {
+    res.send({
+      message: error.message,
+      success: false,
+      data: null,
+    });
+  }
+});
+
+
 module.exports = router;

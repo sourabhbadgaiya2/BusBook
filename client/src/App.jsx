@@ -50,14 +50,14 @@ const App = () => {
           />
 
           {/* Admin */}
-          <Route
+          {/* <Route
             path='/admin'
             element={
               <ProtectedRoutes>
                 <AdminHome />
               </ProtectedRoutes>
             }
-          />
+          /> */}
           <Route
             path='/admin/buses'
             element={

@@ -2,7 +2,7 @@ import React from "react";
 
 const Loader = () => {
   return (
-    <div className='grid min-h-[140px] z-[99] backdrop-blur-sm absolute top-0 left-0 right-0 bottom-0 flex items-center justify-center w-full place-items-center overflow-x-hidden rounded-lg p-6 lg:overflow-visible'>
+    <div className=' min-h-[140px] z-[99] backdrop-blur-sm absolute top-0 left-0 right-0 bottom-0 flex items-center justify-center w-full place-items-center overflow-x-hidden rounded-lg p-6 lg:overflow-visible'>
       <svg
         className='w-16 h-16 animate-spin text-gray-900/50'
         viewBox='0 0 64 64'

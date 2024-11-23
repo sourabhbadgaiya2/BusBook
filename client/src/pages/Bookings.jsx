@@ -125,7 +125,7 @@ const Bookings = () => {
             </p>
             <hr />
             <p className='text-sm'>
-              <span className='font-semibold'>Journey Date:</span>{" "}
+              <span className='font-semibold'>Journey Date:</span>
               {moment(selectedBooking.journeyDate).format("DD-MM-YYYY")}
             </p>
             <p className='text-sm'>

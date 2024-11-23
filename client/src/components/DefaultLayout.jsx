@@ -34,7 +34,7 @@ function DefaultLayout({ children }) {
       {/* Sidebar */}
       <div
         className={`flex flex-col bg-gray-900 text-white transition-all duration-300 ${
-          collapsed ? "w-20" : "w-64"
+          collapsed ? "w-20" : "w-56"
         }`}
       >
         {/* Sidebar Header */}
